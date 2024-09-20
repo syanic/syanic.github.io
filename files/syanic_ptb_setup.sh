@@ -4,17 +4,18 @@
 # Kya dekh rahe ho bhai? Naam change krke apne channel par daloge?? 
 # Don't steal my code bruhh, this took hours to make.
 
+
 setup() {
     echo ""
-    echo "### Su: Stating.."
-    echo "### Su: Updating System.. [1/2]"
+    echo "### SU: Stating.."
+    echo "### SU: Updating System.. [1/2]"
     sudo apt-get update
-    echo "### Su: Updated System.. [1/2]"
-    echo "### Su: Upgrading System.. [2/2]"
+    echo "### SU: Updated System.. [1/2]"
+    echo "### SU: Upgrading System.. [2/2]"
     sudo apt-get upgrade -y
-    echo "### Su: Upgraded System.. [2/2]"
+    echo "### SU: Upgraded System.. [2/2]"
 
-    echo "### Su: Installing Discord PTB, Chromium & Chrome Remote Desktop.."
+    echo "### SU: Installing Discord PTB, Chromium & Chrome Remote Desktop.."
     wget -O discord-ptb.deb "https://discordapp.com/api/download/ptb?platform=linux&format=deb"
     wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
     
@@ -22,37 +23,37 @@ setup() {
     sudo apt-get install chromium-browser -y
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
-    echo "### Su: Installing Openbox with English Keyboard.."
+    echo "### SU: Installing Openbox with English Keyboard.."
     sudo apt-get install openbox -y
-    echo "### Su: Installed Openbox with English Keyboard."
+    echo "### SU: Installed Openbox with English Keyboard."
     
     remotedesktop
 }
 
 remotedesktop() {
-    echo "### Su: Paste your Chrome Remote Desktop s' Derbian SSH Command below >"
+    echo "### SU: Paste your Chrome Remote Desktop s' Derbian SSH Command below >"
     read ssh_command
 
-    echo "### Su: Killing all existing Chrome Remote Desktop instances..."
+    echo "### SU: Killing all existing Chrome Remote Desktop instances..."
     sudo pkill -f chrome-remote-desktop
 
     if pgrep -x "chrome-remote-desktop" > /dev/null; then
-        echo "### Su: Waiting for Chrome Remote Desktop daemon to stop..."
+        echo "### SU: Waiting for Chrome Remote Desktop daemon to stop..."
         sleep 5
     else
-        echo "### Su: Chrome Remote Desktop daemon is fully stopped."
+        echo "### SU: Chrome Remote Desktop daemon is fully stopped."
     fi
 
-    echo "### Su: Removing all existing Chrome Remote Desktop hosts..."
+    echo "### SU: Removing all existing Chrome Remote Desktop hosts..."
     existing_hosts=$(sudo /opt/google/chrome-remote-desktop/chrome-remote-desktop --list-hosts 2>/dev/null | grep -oP '(?<=`)[a-f0-9\-]+(?=`)')
     
     if [ -n "$existing_hosts" ]; then
         for host in $existing_hosts; do
             sudo /opt/google/chrome-remote-desktop/chrome-remote-desktop --remove-host=$host
-            echo "### Su: Removed host: $host"
+            echo "### SU: Removed host: $host"
         done
     else
-        echo "### Su: No existing hosts found."
+        echo "### SU: No existing hosts found."
     fi
 
     sudo pkill -f chrome-remote-desktop
@@ -67,10 +68,10 @@ remotedesktop() {
     echo "$output"
     
     if echo "$output" | grep -q "OAuth error"; then
-        echo "### Su: Error Detected (OAuth) -> Your SSH command might be old, please provide the new SSH command."
+        echo "### SU: Error Detected (OAuth) -> Your SSH command might be old, please provide the new SSH command."
     elif echo "$output" | grep -q "Host started successfully."; then
-        echo "### Su: The Machine is UP and Ready!! An instance named [Sub to Syanic XD ($random_number)] should appear on your Chrome Remote Desktop APP."
-        echo "### Su: Use the code 111111 to Connect!!"
+        echo "### SU: The Machine is UP and Ready!! An instance named [Sub to Syanic XD ($random_number)] should appear on your Chrome Remote Desktop APP."
+        echo "### SU: Use the code 111111 to Connect!!"
     fi
 }
 
@@ -94,11 +95,11 @@ main() {
             remotedesktop
             ;;
         3)
-            echo "### Su: Exiting..."
+            echo "### SU: Exiting..."
             exit 0
             ;;
         *)
-            echo "Su: Invalid option."
+            echo "SU: Invalid option."
             main
             ;;
     esac
