@@ -2,7 +2,7 @@
 # Script made with <3 by Syanic XD (YouTube)
 
 # Kya dekh rahe ho bhai? Naam change krke apne channel par daloge?? 
-# Don't steal my code bruhh
+# Don't steal my code bruhh, this took hours to make.
 
 setup() {
     echo ""
