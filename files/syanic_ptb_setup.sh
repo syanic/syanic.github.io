@@ -28,7 +28,13 @@ setup() {
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
     echo "### SU: Installing Openbox with English Keyboard.."
-    wget https://syanic.github.io/files/bgr.jpg && sudo apt-get install -y feh && mkdir -p ~/.config/openbox && echo "feh --bg-scale ~/bgr.jpg &" >> ~/.config/openbox/autostart
+    wget https://syanic.github.io/files/bgr.jpg
+    sudo apt-get install -y nitrogen
+    mkdir -p ~/.config/openbox
+    mkdir -p ~/.config/nitrogen
+    cp bgr.jpg ~/.config/nitrogen/
+    nitrogen --set-auto ~/.config/nitrogen/bgr.jpg &
+    echo "nitrogen --restore &" >> ~/.config/openbox/autostart
     sudo apt-get install openbox -y
     echo "### SU: Installed Openbox with English Keyboard."
     
