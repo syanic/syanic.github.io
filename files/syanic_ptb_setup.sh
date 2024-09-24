@@ -32,6 +32,7 @@ setup() {
     
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
+    chmod 644 ~/Pictures/backgrounds/bgr.jpg
 
     sudo apt-get install openbox -y
     
