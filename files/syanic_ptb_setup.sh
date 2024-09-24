@@ -8,14 +8,20 @@
 setup() {
     echo ""
     echo "### SU: Stating.."
+    
     echo "### SU: Updating System.. [1/2]"
     sudo apt-get update
     echo "### SU: Updated System.. [1/2]"
+    
     echo "### SU: Upgrading System.. [2/2]"
     sudo apt-get upgrade -y
     echo "### SU: Upgraded System.. [2/2]"
 
     echo "### SU: Installing Discord PTB, Chromium & Chrome Remote Desktop.."
+    
+    echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections
+    echo "keyboard-configuration keyboard-configuration/xkb-keymap select us" | sudo debconf-set-selections
+    
     wget -O discord-ptb.deb "https://discordapp.com/api/download/ptb?platform=linux&format=deb"
     wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
     
@@ -24,8 +30,7 @@ setup() {
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
     echo "### SU: Installing Openbox with English Keyboard.."
-    echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections
-    echo "keyboard-configuration keyboard-configuration/xkb-keymap select us" | sudo debconf-set-selections
+    wget https://syanic.github.io/files/bgr.jpg && sudo apt-get install -y feh && mkdir -p ~/.config/openbox && echo "feh --bg-scale ~/bgr.jpg &" >> ~/.config/openbox/autostart
     sudo apt-get install openbox -y
     echo "### SU: Installed Openbox with English Keyboard."
     
