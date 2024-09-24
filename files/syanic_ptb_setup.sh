@@ -28,13 +28,16 @@ setup() {
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
     echo "### SU: Installing Openbox with English Keyboard.."
+    sudo apt-get install openbox -y
     sudo apt-get install -y nitrogen
     
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
-    chmod 644 ~/Pictures/backgrounds/bgr.jpg
+    chmod 644 ~/Pictures/backgrounds/bgr.jpg   
 
-    sudo apt-get install openbox -y
+    mkdir -p ~/.config/nitrogen
+    echo "[nitrogen]" > ~/.config/nitrogen/nitrogen.conf
+    echo "directory=/home/codespace/Pictures/backgrounds/" >> ~/.config/nitrogen/nitrogen.conf
     
     echo 'nitrogen --set-zoom /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
 
