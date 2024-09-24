@@ -74,6 +74,7 @@ remotedesktop() {
     
     if echo "$output" | grep -q "OAuth error"; then
         echo "### SU: Error Detected (OAuth) -> Your SSH command might be old, please provide the new SSH command."
+        ./syanic_ptb_setup.sh
     elif echo "$output" | grep -q "Host started successfully."; then
         echo "### SU: The Machine is UP and Ready!! An instance named [Sub to Syanic XD ($random_number)] should appear on your Chrome Remote Desktop APP."
         echo "### SU: Use the code 111111 to Connect!!"
@@ -81,7 +82,8 @@ remotedesktop() {
 }
 
 main() {
-    clear
+    echo ""
+    echo ""
     echo "===== SYANIC UTILITY (Su) ====="
     echo "Made by Syanic XD on YouTube <3"
     echo ""
