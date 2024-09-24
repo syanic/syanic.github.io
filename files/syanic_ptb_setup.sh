@@ -32,16 +32,17 @@ setup() {
     
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
-    
-    nitrogen --set-auto ~/Pictures/backgrounds/bgr.jpg &
-    
-    echo "nitrogen --restore &" >> ~/.config/openbox/autostart
+
     sudo apt-get install openbox -y
+    
+    echo 'nitrogen --set-zoom /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
+
     openbox --restart
-    echo "### SU: Installed Openbox with English Keyboard."
+    echo "### SU: Installed Openbox with English Keyboard and set wallpaper."
     
     remotedesktop
 }
+
 
 
 remotedesktop() {
