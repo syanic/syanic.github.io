@@ -24,6 +24,8 @@ setup() {
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
     echo "### SU: Installing Openbox with English Keyboard.."
+    echo "keyboard-configuration  keyboard-configuration/layoutcode  select  us" | sudo debconf-set-selections
+    sudo sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="us"/' /etc/default/keyboard
     sudo apt-get install openbox -y
     echo "### SU: Installed Openbox with English Keyboard."
     
