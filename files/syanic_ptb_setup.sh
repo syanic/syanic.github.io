@@ -8,6 +8,8 @@
 setup() {
     echo ""
     echo "### SU: Stating.."
+    echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections
+    echo "keyboard-configuration keyboard-configuration/xkb-keymap select us" | sudo debconf-set-selections
     
     echo "### SU: Updating System.. [1/2]"
     sudo apt-get update
@@ -18,10 +20,6 @@ setup() {
     echo "### SU: Upgraded System.. [2/2]"
 
     echo "### SU: Installing Discord PTB, Chromium & Chrome Remote Desktop.."
-    
-    echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections
-    echo "keyboard-configuration keyboard-configuration/xkb-keymap select us" | sudo debconf-set-selections
-    
     wget -O discord-ptb.deb "https://discordapp.com/api/download/ptb?platform=linux&format=deb"
     wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
     
