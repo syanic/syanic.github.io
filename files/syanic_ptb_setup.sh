@@ -28,18 +28,21 @@ setup() {
     sudo apt install ./chrome-remote-desktop_current_amd64.deb -y
     
     echo "### SU: Installing Openbox with English Keyboard.."
-    wget https://syanic.github.io/files/bgr.jpg
     sudo apt-get install -y nitrogen
-    mkdir -p ~/.config/openbox
-    mkdir -p ~/.config/nitrogen
-    cp bgr.jpg ~/.config/nitrogen/
-    nitrogen --set-auto ~/.config/nitrogen/bgr.jpg &
+    
+    mkdir -p ~/Pictures/backgrounds
+    wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
+    
+    nitrogen --set-auto ~/Pictures/backgrounds/bgr.jpg &
+    
     echo "nitrogen --restore &" >> ~/.config/openbox/autostart
     sudo apt-get install openbox -y
+    openbox --restart
     echo "### SU: Installed Openbox with English Keyboard."
     
     remotedesktop
 }
+
 
 remotedesktop() {
     echo "### SU: Paste your Chrome Remote Desktop s' Derbian SSH Command below >"
