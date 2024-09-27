@@ -29,7 +29,8 @@ setup() {
     
     echo "### SU: Installing Openbox with English Keyboard.."
     sudo apt-get install openbox -y
-    sudo apt-get install -y feh
+    sudo apt-get install -y feh conky plank
+    sudo apt install xfce4-terminal
 
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
@@ -37,9 +38,14 @@ setup() {
 
     mkdir -p ~/.config/openbox
     echo 'feh --bg-fill /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
+    mkdir -p ~/.config/conky && echo -e "conky.config = {\n    background = true,\n    update_interval = 1,\n    double_buffer = true,\n    own_window = true,\n    own_window_class = 'Conky',\n    own_window_type = 'desktop',\n    own_window_transparent = true,\n    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',\n    own_window_title = 'Syanic Utility',\n    alignment = 'top_left',\n    gap_x = 10,\n    gap_y = 10,\n    minimum_width = 200,\n    minimum_height = 50,\n    draw_borders = false,\n    draw_outline = false,\n    draw_shades = false,\n    use_xft = true,\n    font = 'DejaVu Sans Mono:size=10',\n    xftalpha = 0.8,\n    color1 = 'white',\n};\n\nconky.text = [[\nSyanic Utility loaded successfully.\n]];" > ~/.config/conky/conky.conf
+
+    echo 'conky &' >> ~/.config/openbox/autostart
+    echo 'plank &' >> ~/.config/openbox/autostart
 
     openbox --restart
-    echo "### SU: Installed Openbox with English Keyboard and set wallpaper."
+
+    echo "### SU: Installed Openbox with English Keyboard, set wallpaper, added Conky message, and configured Plank dock."
 
     remotedesktop
 }
