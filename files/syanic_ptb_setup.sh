@@ -30,7 +30,8 @@ setup() {
     echo "### SU: Installing Openbox with English Keyboard.."
     sudo apt-get install openbox -y
     sudo apt-get install -y feh conky plank
-    sudo apt install xfce4-terminal
+    sudo apt install xfce4-terminal -y
+    sudo apt-get install firefox -y
 
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
