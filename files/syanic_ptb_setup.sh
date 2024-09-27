@@ -29,21 +29,18 @@ setup() {
     
     echo "### SU: Installing Openbox with English Keyboard.."
     sudo apt-get install openbox -y
-    sudo apt-get install -y nitrogen
-    
+    sudo apt-get install -y feh
+
     mkdir -p ~/Pictures/backgrounds
     wget -O ~/Pictures/backgrounds/bgr.jpg https://syanic.github.io/files/bgr.jpg
     chmod 644 ~/Pictures/backgrounds/bgr.jpg   
 
-    mkdir -p ~/.config/nitrogen
-    echo "[nitrogen]" > ~/.config/nitrogen/nitrogen.conf
-    echo "directory=/home/codespace/Pictures/backgrounds/" >> ~/.config/nitrogen/nitrogen.conf
-    
-    echo 'nitrogen --set-zoom /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
+    mkdir -p ~/.config/openbox
+    echo 'feh --bg-scale /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
 
     openbox --restart
     echo "### SU: Installed Openbox with English Keyboard and set wallpaper."
-    
+
     remotedesktop
 }
 
