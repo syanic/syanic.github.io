@@ -36,7 +36,7 @@ setup() {
     chmod 644 ~/Pictures/backgrounds/bgr.jpg   
 
     mkdir -p ~/.config/openbox
-    echo 'feh --bg-scale /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
+    echo 'feh --bg-fill /home/codespace/Pictures/backgrounds/bgr.jpg &' >> ~/.config/openbox/autostart
 
     openbox --restart
     echo "### SU: Installed Openbox with English Keyboard and set wallpaper."
